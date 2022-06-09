@@ -21,15 +21,15 @@ public class TestController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 	
-	/*@GetMapping("/test/{name}")
-	public String testAPI(@PathVariable("name") String name) {
+	@GetMapping("/test/direct/{name}")
+	public String testAPIDirect(@PathVariable("name") String name) {
 		Person p = new Person(1L, name);
 		rabbitTemplate.convertAndSend("Mobile", p);
 		rabbitTemplate.convertAndSend("Direct-Exchange", "mobile", p);
 		rabbitTemplate.convertAndSend("Fanout-Exchange", "", p);
 		rabbitTemplate.convertAndSend("Topic-Exchange", "tv.mobile.ac", p);
 		return "Success";
-	}*/
+	}
 	
 	@GetMapping("/test/{name}")
 	public String testAPI(@PathVariable("name") String name) throws IOException {

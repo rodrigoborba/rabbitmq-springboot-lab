@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMQConsumer {
 
-	/*@RabbitListener(queues = "Mobile")
-	public void getMessage(Person p) {
-		System.out.println(p.getName());
-	}*/
-	
 	@RabbitListener(queues = "Mobile")
+	public void getMessage(Person p) {
+		System.out.println("Person " + p.getName() + " " + System.currentTimeMillis());
+	}
+	
+	/*@RabbitListener(queues = "Mobile")
 	public void getMessage(byte[] message) throws IOException, ClassNotFoundException {
 		ByteArrayInputStream bis = new ByteArrayInputStream(message);
 		ObjectInput in = new ObjectInputStream(bis);
@@ -24,5 +24,5 @@ public class RabbitMQConsumer {
 		in.close();
 		bis.close();
 		System.out.println(p.getName());
-	}
+	}*/
 }
