@@ -21,8 +21,8 @@ public class TestController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 	
-	@GetMapping("/test/direct/{name}")
-	public String testAPIDirect(@PathVariable("name") String name) {
+	@GetMapping("/test/{name}")
+	public String testAPI(@PathVariable("name") String name) {
 		Person p = new Person(1L, name);
 		rabbitTemplate.convertAndSend("Mobile", p);
 		rabbitTemplate.convertAndSend("Direct-Exchange", "mobile", p);
@@ -31,8 +31,8 @@ public class TestController {
 		return "Success";
 	}
 	
-	@GetMapping("/test/{name}")
-	public String testAPI(@PathVariable("name") String name) throws IOException {
+	@GetMapping("/test/header/{name}")
+	public String testAPIHeaderExchange(@PathVariable("name") String name) throws IOException {
 		Person p = new Person(1L, name);
 		
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
